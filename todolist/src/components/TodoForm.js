@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class TodoForm extends Component {
   constructor() {
@@ -25,8 +26,17 @@ class TodoForm extends Component {
           />
           <button>Add New Todo</button>
         </form>
+        <li>{this.props.todo}</li>
       </div>
     );
   }
 }
-export default TodoForm;
+const mapStateToProps = state => {
+  return {
+    todo: state.todos
+  };
+};
+export default connect(
+  mapStateToProps,
+  {}
+)(TodoForm);
